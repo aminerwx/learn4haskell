@@ -211,7 +211,7 @@ So, the output in this example means that 'False' has type 'Bool'.
 >>> :t True
 True :: Bool
 >>> :t 'a'
-'a' :: String
+'a' :: Char
 >>> :t 42
 42 :: Num a => a
 A pair of boolean and char:
@@ -488,7 +488,8 @@ Implement a function that returns the last digit of a given number.
   whether it works for you!
 -}
 -- DON'T FORGET TO SPECIFY THE TYPE IN HERE
-lastDigit n = error "lastDigit: Not implemented!"
+lastDigit :: Int -> Int
+lastDigit n = mod n 10
 
 
 {- |
@@ -518,7 +519,7 @@ branches because it is an expression and it must always return some value.
   satisfying the check will be returned and, therefore, evaluated.
 -}
 closestToZero :: Int -> Int -> Int
-closestToZero x y = error "closestToZero: not implemented!"
+closestToZero x y = if abs(0 - (x)) < abs(0 - (y)) then x else y 
 
 
 {- |
@@ -551,8 +552,12 @@ value after "=" where the condition is true.
 
 Casual reminder about adding top-level type signatures for all functions :)
 -}
-
-mid x y z = error "mid: not implemented!"
+mid :: Int -> Int -> Int -> Int
+mid x y z
+  | (x < y && x > z) || (x > y && x < z) = x
+  | (y < x && y > z) || (y > x && y < z) = y
+  | (z < x && z > y) || (z > x && z < y) = z
+  | otherwise = -1
 
 {- |
 =⚔️= Task 8
@@ -566,7 +571,10 @@ True
 >>> isVowel 'x'
 False
 -}
-isVowel c = error "isVowel: not implemented!"
+isVowel :: Char -> Bool
+isVowel c 
+  | c == 'a' || c == 'e' || c == 'i' || c == 'u' || c == 'o' = True
+  | otherwise = False
 
 
 {- |
