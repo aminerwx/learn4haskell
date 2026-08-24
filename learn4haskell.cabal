@@ -37,6 +37,7 @@ common common-options
                        -Wincomplete-uni-patterns
                        -Wincomplete-record-updates
                        -Wredundant-constraints
+                       -w
   if impl(ghc >= 8.2)
     ghc-options:       -fhide-source-paths
   if impl(ghc >= 8.4)
